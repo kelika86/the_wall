@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Wall Assignment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'first_app/styles.css' %}">
+        
+    </head>
+    <body>
+        <h1>The Wall</h1>
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        <h3>Register</h3>
+        <fieldset>
+        <form action="/register" method="POST">
+            {% csrf_token %}
+            <p>First Name<input type="text" name="first_name"></p>
+            <p>E-mail<input type="text" name="email"></p>
+            <p>Password<input type="text" name="password"></p>
+            <p>Confirm password<input type="text" name="c_password"></p>
+            <p><input type="submit" value="Register!"></p>
+        </form>
+        </fieldset>
+        <h3>Log In</h3>
+        <fieldset>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <p>E-mail<input type="text" name="email"></p>
+            <p>Password<input type="text" name="password"></p>
+            <p><input type="submit" value="Log In!"></p>
+        </form>
+        </fieldset>
+    </body>
+</html>
